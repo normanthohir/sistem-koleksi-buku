@@ -1,5 +1,7 @@
 @extends('layouts.main')
 @section('container')
+
+    {{-- pencaiam search --}}
     <form action="/koleksi" method="GET" class="flex items-center max-w-sm mx-auto my-12">
         <label for="search" class="sr-only">Search</label>
         <div class="relative w-full">
@@ -23,6 +25,8 @@
             <span class="sr-only">Search</span>
         </button>
     </form>
+
+    {{-- card koleksi buku --}}
     <section id="blog" class="pt-16 pb-16 bg-slate-100">
         <div class="container">
             <div class="flex flex-wrap ">
@@ -37,10 +41,10 @@
                                     src="{{ asset('uploads/cover_image/' . $book->cover_image) }}" alt="Book Cover" />
                                 <div class="p-5">
                                     <h5 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {{ $book->title }}</h5>
-                                    <h5 class="mb-1 text-lg font-normal tracking-tight text-gray-900 dark:text-white">
-                                        <span class="font-bold">Author:</span> {{ $book->author }}
+                                       <span class="font-bold">Author:</span> {{ $book->author }}
                                     </h5>
+                                         {{ $book->title }}</h5>
+                                    <h5 class="mb-1 text-lg font-normal tracking-tight text-gray-900 dark:text-white">
                                     <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">
                                         <span class="font-bold">ISBN:</span> {{ $book->isbn }}
                                     </p>
