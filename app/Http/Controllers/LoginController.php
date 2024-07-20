@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
 
         //password salah maka balik lagi ke ahalaman login
-        return back()->with('LoginEror', 'Login Gagal');
+        return back()->withInput()->with('LoginEror', 'Login Gagal');
     }
 
     public function logout(Request $request)

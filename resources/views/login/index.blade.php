@@ -70,7 +70,7 @@
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                 <input type="email" id="email" name="email"
                     class="{{ $errors->has('email') ? 'border-red-500' : 'border-gray-300' }} shadow-sm bg-gray-50 border  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    placeholder="Masukan Email" value="{{ old('email') }}" />
+                    placeholder="Masukan Email" required value="{{ old('email') }}" />
                 @error('email')
                     <div class="text-xs text-red-500 mt-1">{{ $message }}</div>
                 @enderror
@@ -81,7 +81,7 @@
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                 <input type="password" id="password" name="password"
                     class="{{ $errors->has('password') ? 'border-red-500' : 'border-gray-300' }} shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    placeholder="Masukan Password" value="{{ old('password') }}" />
+                    placeholder="Masukan Password" required />
                 @error('password')
                     <div class="text-xs text-red-500 mt-1">{{ $message }}</div>
                 @enderror
