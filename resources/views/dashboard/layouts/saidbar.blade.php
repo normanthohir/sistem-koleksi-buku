@@ -25,7 +25,7 @@
                 <a href="/dashboard"
                     class="{{ Request::is('dashboard') ? 'bg-gray-100' : '' }} flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg aria-hidden="true"
-                        class="{{ Request::is('dashboard') ? 'text-black' : '' }} w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        class="{{ Request::is('dashboard') ? 'text-gray-900' : '' }} w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -36,7 +36,7 @@
             <li>
                 <a href="/dashboard/books"
                     class="{{ Request::is('dashboard/books*') ? 'bg-gray-100' : '' }} flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="{{ Request::is('dashboard/books*') ? 'text-black' : '' }} w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-whith"
+                    <svg class="{{ Request::is('dashboard/books*') ? 'text-gray-900' : '' }} w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-whith"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="currentColor" viewBox="0 0 24 24">
                         <path fill-rule="evenodd"
@@ -48,20 +48,19 @@
                 </a>
             </li>
             <li>
-            <a href="/dashboard/categories"
-                class="{{ Request::is('dashboard/categories*') ? 'bg-gray-100' : '' }} flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="{{ Request::is('dashboard/categories*') ? 'text-black' : '' }} w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-whith"
-                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                        d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z"
-                        clip-rule="evenodd" />
-                </svg>
+                <a href="/dashboard/categories"
+                    class="{{ Request::is('dashboard/categories*') ? 'bg-gray-100' : '' }} flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="{{ Request::is('dashboard/categories*') ? 'text-gray-900' : '' }} w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-whith"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M5 3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm14 18a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4ZM5 11a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H5Zm14 2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4Z" />
+                    </svg>
 
-                <span class="flex-1 ml-3 whitespace-nowrap">Category</span>
-            </a>
-        </li>
-          
+                    <span class="flex-1 ml-3 whitespace-nowrap">Category</span>
+                </a>
+            </li>
+
             <li>
                 <a href="#"
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -82,7 +81,7 @@
                     </span>
                 </a>
             </li>
-          
+
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <li>
@@ -93,11 +92,10 @@
                         <svg class="flex-shrink-0 w-6 h-6  text-gray-500 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />
                         </svg>
-                       
+
                         <span class="ml-1">Logout</span>
                     </button>
                 </form>
