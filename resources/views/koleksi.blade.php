@@ -38,7 +38,7 @@
                             <div
                                 class="max-w-60 pt-2 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
                                 <img class="rounded-t-lg w-full h-56 md:h-64"
-                                    src="{{ asset('uploads/cover_image/' . $book->cover_image) }}" alt="Book Cover" />
+                                    src="{{ asset('storage/' . $book->cover_image) }}" alt="Book Cover" />
                                 <div class="p-5">
                                     <h5 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
                                        <span class="font-bold">Author:</span> {{ $book->author }}

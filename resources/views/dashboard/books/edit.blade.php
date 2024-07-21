@@ -45,7 +45,7 @@
                 <label for="cover_image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cover Gambar</label>
                 <input type="file" id="cover_image" name="cover_image" onchange="previewImage()"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('cover_image') border-red-500 @enderror" />
-                <img class="img-preview w-32 h-40 mt-3" style="display: block;" src="{{ asset('uploads/cover_image/' . $book->cover_image) }}" alt="Cover buku">
+                <img class="img-preview w-32 h-40 mt-3" style="display: block;" src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover buku">
                 @error('cover_image')
                     <div class="text-xs text-red-500 mt-1">{{ $message }}</div>
                 @enderror
