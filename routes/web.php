@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::resource('/dashboard/books', BookController::class)->middleware('auth');
+
+Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
