@@ -38,7 +38,7 @@
                         </th>
                        
                         <th scope="col" class="px-6 py-3">
-                            action
+                            Action
                         </th>
                     </tr>
                 </thead>

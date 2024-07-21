@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,7 +45,7 @@ class BookController extends Controller
      */
     public function store(Request $request, Book $book)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required',
             'author' => 'required',
             'isbn' => 'required|unique:books',
@@ -52,18 +53,12 @@ class BookController extends Controller
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $data = $request->all();
+        // Memeriksa apakah ada gambar sampul baru
+        if ($request->file('cover_image')) {
+            $validatedData['cover_image'] = $request->file('cover_image')->store('cover-images', 'public');
+        }
 
-        // Menyimpan gambar Cover 
-        $file = $request->file('cover_image');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('uploads/cover_image'), $fileName);
-
-        // Menggabungkan data request dengan path gambar yang diunggah
-        $data = $request->all();
-        $data['cover_image'] = $fileName;
-
-        Book::create($data);
+        Book::create($validatedData);
 
         return redirect('/dashboard/books')->with('success', 'Book created successfully.');
     }
@@ -89,49 +84,49 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $book = Book::findOrFail($id);
+
+        $rules = [
             'title' => 'required',
             'author' => 'required',
-            'isbn' => 'required|unique:books,isbn,' . $book->id,
             'year' => 'required|integer',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        ];
 
-        $data = $request->all();
-
-        // Menyimpan gambar Cover baru jika diunggah
-        if ($file = $request->file('cover_image')) {
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/cover_image'), $fileName);
-            // Hapus gambar lama jika ada
-            if ($book->cover_image) {
-                unlink(public_path('uploads/cover_image/' . $book->cover_image));
-            }
-            $data['cover_image'] = $fileName;
-        } else {
-            // Jika tidak ada gambar baru, gunakan gambar lama
-            $data['cover_image'] = $book->cover_image;
+        if ($request->isbn != $book->isbn) {
+            $rules['isbn'] = 'required|unique:books,isbn,' . $id;
         }
 
-        $book->update($data);
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('cover_image')) {
+            if ($book->cover_image) {
+                // Hapus gambar lama jika ada
+                Storage::disk('public')->delete($book->cover_image);
+            }
+            // Simpan gambar baru
+            $validatedData['cover_image'] = $request->file('cover_image')->store('cover-images', 'public');
+        }
+
+        $book->update($validatedData);
 
         return redirect('/dashboard/books')->with('success', 'Book updated successfully.');
     }
 
 
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        // Hapus gambar jika ada
+        $book = Book::findOrFail($id);
+
         if ($book->cover_image) {
-            $imagePath = public_path('uploads/cover_image/' . $book->cover_image);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
+            // Hapus gambar jika ada
+            Storage::disk('public')->delete($book->cover_image);
         }
 
         $book->delete();
