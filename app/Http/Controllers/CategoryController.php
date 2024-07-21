@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class CategoryController extends Controller
 {
@@ -21,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.categories.create');
     }
 
     /**
@@ -29,7 +31,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'=> 'required'
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect('/dashboard/categories')->with('success', 'Category created successfully.');
     }
 
     /**

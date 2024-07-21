@@ -3,13 +3,30 @@
     <section class="bg-white border border-gray-200 shadow-lg rounded mb-4 p-4">
         <h2 class="font-semibold text-2xl text-center">Table Category</h2>
     </section>
-    
-    
+
+    @if (session()->has('success'))
+        <div id="success-alert"
+            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4  max-w-md sm:w-full"
+            role="alert">
+            <strong class="font-bold">Sukses!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <svg class="fill-current h-6 w-6 text-green-500 cursor-pointer" role="button"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    onclick="document.getElementById('success-alert').style.display='none'">
+                    <title>Tutup</title>
+                    <path
+                        d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                </svg>
+            </span>
+        </div>
+    @endif
+
     <div class="relative p-6 bg-white border border-gray-200 rounded-lg  overflow-x-auto shadow-lg sm:rounded-lg">
         <div
             class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
             <div>
-                <a href=""
+                <a href="/dashboard/categories/create"
                     class="text-sm font-semibold bg-green-400 text-white rounded-lg px-3 py-2 hover:bg-green-500">Tambah</a>
             </div>
             <label for="table-search" class="sr-only">Search</label>
@@ -21,7 +38,7 @@
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                <form  method="GET">
+                <form method="GET">
                     <input type="text" name="search" id="search" value="{{ old('search', request('search')) }}"
                         class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search..">
@@ -32,11 +49,11 @@
             <table class="w-full text-sm text-left rtl:text-right ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-            
+
                         <th nscope="col" class="px-6 py-3">
                             Name
                         </th>
-                       
+
                         <th scope="col" class="px-6 py-3">
                             Action
                         </th>
@@ -52,13 +69,13 @@
                                     <div class="text-base font-semibold"> {{ $category->nama }} </div>
                                 </div>
                             </th>
-                            
+
                             <td class="px-6 py-4">
                                 <a href=""
                                     class="font-medium text-yellow-300 dark:text-yellow-500 hover:underline">Edit</a>
                                 <span> | </span>
                                 <form action="" method="POST" class="inline" enctype="multipart/form-data">
-                                    
+
                                     <button type="submit"
                                         class="text-xs font-semibold leading-tight text-red-700">Hapus</button>
                                 </form>
@@ -72,5 +89,4 @@
             </div>
         </div>
     </div>
-
-    @endsection    
+@endsection
