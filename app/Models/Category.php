@@ -10,6 +10,7 @@ class Category extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    //relasi 
     public function books()
     {
         return $this->hasMany(Book::class);
