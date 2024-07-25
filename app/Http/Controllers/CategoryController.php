@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class CategoryController extends Controller
 {
@@ -32,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama'=> 'required'
+            'nama' => 'required'
         ]);
 
         Category::create($validatedData);
@@ -53,7 +51,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('dashboard.categories.edit', compact('category'));
     }
 
     /**
@@ -61,7 +60,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        $category = Category::findOrFail($id);
+        $category->update($validatedData);
+
+        return redirect('/dashboard/categories')->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -69,6 +75,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect('/dashboard/categories')->with('success', 'Category deleted successfully.');
     }
 }

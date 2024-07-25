@@ -1,8 +1,10 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Book; // Import model Book
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,42 +20,19 @@ class DatabaseSeeder extends Seeder
             'email' => 'norman@gmail.com',
         ]);
 
-        // Seeder untuk Book
-        // $books = [
-        //     [
-        //         'title' => 'To Kill a Mockingbird',
-        //         'author' => 'Harper Lee',
-        //         'isbn' => '9780061120084',
-        //         'year' => 1960,
-        //     ],
-        //     [
-        //         'title' => '1984',
-        //         'author' => 'George Orwell',
-        //         'isbn' => '9780451524935',
-        //         'year' => 1949,
-        //     ],
-        //     [
-        //         'title' => 'The Great Gatsby',
-        //         'author' => 'F. Scott Fitzgerald',
-        //         'isbn' => '9780743273565',
-        //         'year' => 1925,
-        //     ],
-        //     [
-        //         'title' => 'The Catcher in the Rye',
-        //         'author' => 'J.D. Salinger',
-        //         'isbn' => '9780316769488',
-        //         'year' => 1951,
-        //     ],
-        //     [
-        //         'title' => 'Pride and Prejudice',
-        //         'author' => 'Jane Austen',
-        //         'isbn' => '9780141040349',
-        //         'year' => 1813,
-        //     ],
-        // ];
+        // Seeder untuk Category
+        $categories = [
+            'Programming',
+            'Robotics',
+            'Science',
+            'History'
+        ];
 
-        // foreach ($books as $book) {
-        //     Book::create($book);
-        // }
+        foreach ($categories as $category) {
+            Category::create(['nama' => $category]);
+        }
+
+        // Seeder untuk Book menggunakan factory
+        Book::factory(8)->create();
     }
 }
