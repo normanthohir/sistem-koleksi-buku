@@ -34,11 +34,11 @@
                     <tr>
             
                         <th nscope="col" class="px-6 py-3">
-                        name
+                        NAME
                         </th>
                        
                         <th scope="col" class="px-6 py-3">
-                            action
+                            ACTION
                         </th>
                     </tr>
                 </thead>
