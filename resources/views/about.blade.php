@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('container')
 <section class="w-full text-center py-20 bg-slate-50">
-    <h2 class="text-3xl font-semibold text-center py-4">Tentang Kami</h2>
+    <h2 class="text-3xl font-semibold text-center py-4">About Us</h2>
     <p class="mb-6 text-sm font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
         Selamat datang di Galery Books, sumber utama Anda untuk semua hal tentang buku. Kami berdedikasi untuk memberikan Anda literatur terbaik, dengan fokus pada variasi, kualitas, dan layanan pelanggan.
     </p>
