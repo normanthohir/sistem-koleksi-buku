@@ -9,7 +9,7 @@
 
 <section class="w-full py-10 bg-white">
     <div class="container mx-auto">
-        <h3 class="text-2xl font-bold mb-6 text-center">Misi Kami</h3>
+        <h3 class="text-2xl font-bold mb-6 text-center">Our Mission</h3>
         <p class="text-center mb-6 text-gray-600 lg:text-lg sm:px-16 xl:px-48">
             Misi kami adalah untuk menumbuhkan kecintaan terhadap membaca dengan menyediakan beragam pilihan buku yang cocok untuk pembaca dari segala usia dan minat. Kami percaya bahwa buku memiliki kekuatan untuk menginspirasi, mendidik, dan mengubah hidup.
         </p>
