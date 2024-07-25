@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('isbn')->unique();
             $table->integer('year');
             $table->string('cover_image')->nullable();
+            $table->foreignId('category_id'); // Foreign key
             $table->timestamps();
+
         });
     }
  
