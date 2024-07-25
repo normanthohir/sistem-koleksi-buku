@@ -37,20 +37,21 @@
                         <div class="w-full p-3 mt-3 md:w-1/5">
                             <div
                                 class="max-w-60 pt-2 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
-                                <img class="rounded-t-lg w-full h-56 md:h-64"
-                                    src="{{ asset('storage/' . $book->cover_image) }}" alt="Book Cover" />
+                                <img class="rounded-t-lg w-full h-56 md:h-64 object-cover"
+                                    src="{{ $book->cover_image ? asset('storage/' . $book->cover_image) : asset('img/image.png') }}"
+                                    alt="Book Cover" />
                                 <div class="p-5">
                                     <h5 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                                       <span class="font-bold">Author:</span> {{ $book->author }}
+                                        <span class="font-bold">Author:</span> {{ $book->author }}
                                     </h5>
-                                         {{ $book->title }}</h5>
+                                    {{ $book->title }}</h5>
                                     <h5 class="mb-1 text-lg font-normal tracking-tight text-gray-900 dark:text-white">
-                                    <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">
-                                        <span class="font-bold">ISBN:</span> {{ $book->isbn }}
-                                    </p>
-                                    <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">
-                                        <span class="font-bold">Year:</span> {{ $book->year }}
-                                    </p>
+                                        <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">
+                                            <span class="font-bold">ISBN:</span> {{ $book->isbn }}
+                                        </p>
+                                        <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">
+                                            <span class="font-bold">Year:</span> {{ $book->year }}
+                                        </p>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +59,6 @@
                 @endif
             </div>
         </div>
-        <!-- Pagination links -->
         <div class="mx-32 mt-6">
             {{ $books->links() }}
         </div>

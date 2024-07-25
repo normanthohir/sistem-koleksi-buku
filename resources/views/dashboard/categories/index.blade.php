@@ -71,10 +71,10 @@
                             </th>
 
                             <td class="px-6 py-4">
-                                <a href=""
+                                <a href="{{ route('categories.edit', $category->id) }}"
                                     class="font-medium text-yellow-300 dark:text-yellow-500 hover:underline">Edit</a>
                                 <span> | </span>
-                                <form action="" method="POST" class="inline" enctype="multipart/form-data">
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="inline" enctype="multipart/form-data">
 
                                     <button type="submit"
                                         class="text-xs font-semibold leading-tight text-red-700">Hapus</button>

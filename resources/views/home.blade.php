@@ -27,7 +27,7 @@
                     <!-- Carousel items -->
                     @foreach ($books as $book)
                         <div class="flex-none w-64 bg-gray-100 rounded-lg shadow-md">
-                            <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}"
+                            <img  src="{{ $book->cover_image ? asset('storage/' . $book->cover_image) : asset('img/image.png') }}" alt="{{ $book->title }}"
                                 class="w-full h-52 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-lg font-semibold">{{ $book->title }}</h3>

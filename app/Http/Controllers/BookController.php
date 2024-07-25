@@ -36,32 +36,34 @@ class BookController extends Controller
      */
     public function create()
     {
-
-        return view('dashboard.books.create');
+        $categories = Category::all();
+        return view('dashboard.books.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request, Book $book)
-    {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'isbn' => 'required|unique:books',
-            'year' => 'required|integer',
-            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+{
+    $validatedData = $request->validate([
+        'title' => 'required',
+        'author' => 'required',
+        'isbn' => 'required|unique:books',
+        'year' => 'required|integer',
+        'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'category_id' => 'required|exists:categories,id'
+    ]);
 
-        // Memeriksa apakah ada gambar sampul baru
-        if ($request->file('cover_image')) {
-            $validatedData['cover_image'] = $request->file('cover_image')->store('cover-images', 'public');
-        }
-
-        Book::create($validatedData);
-
-        return redirect('/dashboard/books')->with('success', 'Book created successfully.');
+    // Memeriksa apakah ada gambar sampul baru
+    if ($request->file('cover_image')) {
+        $validatedData['cover_image'] = $request->file('cover_image')->store('cover-images', 'public');
     }
+
+    Book::create($validatedData);
+
+    return redirect('/dashboard/books')->with('success', 'Book created successfully.');
+}
+
 
 
     /**
