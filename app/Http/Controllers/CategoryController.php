@@ -10,9 +10,19 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(6);
+        $categories = Category::query();
+
+        if ($request->has('search')) {
+            $keyword = $request->input('search');
+
+            $categories->where(function ($query) use ($keyword) {
+                $query->where('nama', 'like', "%$keyword%");
+            });
+        }
+
+        $categories = $categories->paginate(8);
         return view('dashboard.categories.index', compact('categories'));
     }
 

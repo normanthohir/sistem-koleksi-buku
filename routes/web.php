@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -37,6 +38,11 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/books', BookController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('profile.edit_profile');
+    Route::put('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update_profile');
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
